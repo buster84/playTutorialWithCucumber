@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failed="0" tests="1">
+<testcase classname="Todolist" name="Puts a task and delete a task" time="1967">
+<system-out><![CDATA[Given Set a database............................................................passed
+When I go to the home page.........................................................passed
+Then I should see "0 task".........................................................passed
+When I fill in "label" with "Sleep after lunch"...............................................passed
+And I push "create".............................................................passed
+Then I should see "1 task".........................................................passed
+And I am in the home page..........................................................passed
+And I should see "Sleep after lunch"....................................................passed
+When I push "delete"............................................................passed
+Then I should see "0 task".........................................................passed
+And I should not see "Sleep after lunch"..................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
