@@ -12,7 +12,8 @@ object ApplicationBuild extends Build {
                         CucumberPlugin.cucumberSettings ++
                         Seq ( CucumberPlugin.cucumberFeaturesDir := file("./test/features/"),
                               CucumberPlugin.cucumberJunitReport := true,
-                              CucumberPlugin.cucumberHtmlReport := true)
+                              CucumberPlugin.cucumberHtmlReport := true, 
+                              CucumberPlugin.cucumberJsonReport := true )
 
     val appDependencies = Seq(
       // Add your project dependencies here,
