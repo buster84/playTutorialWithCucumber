@@ -1,4 +1,4 @@
-import cucumber.runtime.{EN, ScalaDsl, PendingException}
+import cucumber.runtime.{JA, ScalaDsl, PendingException}
 
 import play.api.test._
 
@@ -14,29 +14,27 @@ import org.openqa.selenium._
 import org.openqa.selenium.firefox._
 import org.openqa.selenium.htmlunit._
 
-class CucumberSteps extends ScalaDsl with EN {
-
-  Given("""^Set a database$"""){ () =>
+class TodoListJASteps extends ScalaDsl with JA {
+  前提("""^データベースを初期化$"""){ () =>
     Env.browser.goTo("http://localhost:3333")
     Env.browser.$("button").click()
   }
-  When("""^I go to the home page$"""){ () =>
+  もし("""^私がトップページに行く$"""){ () =>
     Env.browser.goTo("http://localhost:3333/tasks")
   }
-  Then("""^I am in the home page$"""){ () =>
+  ならば("""^私はトップページにいるべき$"""){ () =>
     assert( Env.browser.url == "http://localhost:3333/tasks" )
   }
-  Then("""^I should see "([^"]*)"$"""){ (str:String) =>
+  ならば("""^私は"([^"]*)"をみれるべき$"""){ (str:String) =>
     assert(Env.browser.$("body").getTexts().get(0).contains(str))  
   }
-  When("""^I fill in "([^"]*)" with "([^"]*)"$"""){ (field:String, value:String) =>
+  もし("""私が"([^"]*)"に"([^"]*)"を入力$"""){ (field:String, value:String) =>
     Env.browser.$("#" + field).text(value)
   }
-  When("""^I push "([^"]*)"$"""){ (name:String) =>
+  もし("""^私が"([^"]*)"を押す$"""){ (name:String) =>
     Env.browser.submit("#" + name)
   }
-  Then("""^I should not see "([^"]*)"$"""){ (str:String) =>
+  ならば("""^私は"([^"]*)"をみれないべき$"""){ (str:String) =>
     assert(false == Env.browser.$("body").getTexts().get(0).contains(str))  
   }
-
 }
