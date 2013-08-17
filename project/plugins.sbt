@@ -8,4 +8,6 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 addSbtPlugin("play" % "sbt-plugin" % "2.1.0")
 
 // use cucumber with sbt
-resolvers += "Templemore Repository" at "http://templemore.co.uk/repo"
+resolvers += Resolver.file("dotM2", file(Path.userHome + "/.m2/repository/"))
+
+addSbtPlugin("templemore" % "sbt-cucumber-plugin" % "0.7.4")
