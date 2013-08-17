@@ -1,4 +1,4 @@
-import cucumber.runtime.{EN, ScalaDsl, PendingException}
+import cucumber.api.scala.{EN, ScalaDsl}
 
 import play.api.test._
 
@@ -37,6 +37,9 @@ class CucumberSteps extends ScalaDsl with EN {
   }
   Then("""^I should not see "([^"]*)"$"""){ (str:String) =>
     assert(false == Env.browser.$("body").getTexts().get(0).contains(str))  
+  }
+  Then("""Take screenshot"""){() =>
+    Env.takeScreenshot()
   }
 
 }
